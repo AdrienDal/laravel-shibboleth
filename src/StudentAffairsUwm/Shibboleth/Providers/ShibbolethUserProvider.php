@@ -2,7 +2,7 @@
 
 namespace StudentAffairsUwm\Shibboleth\Providers;
 
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider as UserProviderInterface;
 use Illuminate\Support\Str;
@@ -19,10 +19,10 @@ class ShibbolethUserProvider implements UserProviderInterface
     /**
      * Create a new Shibboleth user provider.
      *
-     * @param  string  $model
+     * @param string $model
      * @return void
      */
-    public function __construct($model)
+    public function __construct(string $model)
     {
         $this->model = $model;
     }
@@ -99,6 +99,11 @@ class ShibbolethUserProvider implements UserProviderInterface
      * @return \Illuminate\Auth\Authenticatable | null
      */
     public function retrieveByToken($identifier, $token)
+    {
+        // Not Implemented
+    }
+
+    public function rehashPasswordIfRequired(Authenticatable $user, array $credentials, bool $force = false)
     {
         // Not Implemented
     }
